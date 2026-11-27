@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#11131b">
+  <title>Dax AI</title>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="icon" type="image/png" href="/icons/icon-192.png">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Dax AI">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><div class="brand-mark">✳</div><div><strong>Dax AI</strong><small>Your personal AI</small></div></div>
+      <button class="new-chat" id="newChat">＋ New chat</button>
+      <div class="side-label">CHATS</div>
+      <nav class="chat-list" id="chatList" aria-label="Saved chats"></nav>
+            <div class="provider"><span class="provider-icon gemini">✦</span><div><strong>Gemini</strong><small>Powers every answer</small></div><i id="dot-gemini"></i></div>
+      <div class="sidebar-bottom">
+        <div class="status-card"><span class="status-light"></span><div><strong id="statusTitle">Checking setup…</strong><small id="statusText">API connection status</small></div></div>
+        <small id="whoText" class="who"></small>
+        <button class="settings-btn install-btn" id="installBtn" hidden>⬇ Install app</button>
+        <button class="settings-btn" id="setupBtn">⚙ Setup guide</button>
+        <button class="settings-btn" id="logoutBtn">Log out</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobileMenu" aria-label="Open menu">☰</button>
+        <div><span class="eyebrow">YOUR PERSONAL AI WORKSPACE</span><h1>Chat, research and ideas in one place.</h1></div>
+        <span class="beta-pill">V1</span>
+      </header>
+
+      <section class="welcome" id="welcome">
+        <div class="hero-symbol">✳</div>
+        <h2>What are we figuring out today?</h2>
+        <p>Ask questions, solve problems, research topics and plan ideas. Your chats are saved so you can pick up where you left off.</p>
+        <div class="suggestions">
+          <button class="suggestion" data-prompt="Explain a difficult topic in simple terms.">✧ <span><strong>Learn something</strong><small>Make a hard topic easy</small></span></button>
+          <button class="suggestion" data-prompt="Solve this maths problem step by step: ">∑ <span><strong>Solve a maths problem</strong><small>Show working and check it</small></span></button>
+          <button class="suggestion" data-prompt="Research this question and tell me what is known, what is uncertain, and what sources to check: ">⌕ <span><strong>Research a question</strong><small>Compare useful perspectives</small></span></button>
+        </div>
+      </section>
+
+      <section class="conversation" id="conversation" aria-live="polite"></section>
+
+      <section class="composer-wrap">
+        <form class="composer" id="chatForm">
+          <textarea id="message" rows="1" placeholder="Message Dax AI…" aria-label="Your message"></textarea>
+          <div class="composer-bottom">
+            <div class="controls">
+              <label class="select-wrap"><span>Style</span><select id="style"><option value="balanced">Balanced</option><option value="casual">Casual</option><option value="concise">Concise</option><option value="detailed">Detailed</option></select></label>
+            </div>
+            <button class="send" type="submit" id="sendBtn" aria-label="Send message">↑</button>
+          </div>
+        </form>
+        <p class="disclaimer">AI can make mistakes. Check important information. API usage may incur charges.</p>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="iosDialog">
+    <div class="dialog-head"><div><span class="eyebrow">INSTALL</span><h2>Add Dax AI to your Home Screen</h2></div><button class="close" id="closeIos" aria-label="Close">×</button></div>
+    <ol><li>Tap the <strong>Share</strong> button in Safari.</li><li>Choose <strong>Add to Home Screen</strong>.</li><li>Tap <strong>Add</strong>.</li></ol>
+  </dialog>
+
+  <dialog id="setupDialog">
+    <div class="dialog-head"><div><span class="eyebrow">GET STARTED</span><h2>Connect Dax AI</h2></div><button class="close" id="closeDialog" aria-label="Close">×</button></div>
+    <p>Dax AI is powered by Google Gemini. Your API key stays on your server, not in the browser.</p>
+    <ol>
+      <li>Get a free Gemini key at <a href="https://aistudio.google.com/" target="_blank" rel="noreferrer">Google AI Studio</a>.</li>
+      <li>Copy <code>.env.example</code> to <code>.env</code> and add your key.</li>
+      <li>Run <code>npm install</code>, then <code>npm start</code>, and open <code>http://localhost:3000</code>.</li>
+    </ol>
+    <div class="notice">For a public launch, add authentication, rate limiting, budget limits, and privacy terms before sharing the app.</div>
+    <button class="primary" id="gotIt">Got it</button>
+  </dialog>
+  <script src="/app.js"></script>
+</body>
+</html>
